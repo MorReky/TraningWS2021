@@ -54,13 +54,13 @@ namespace AppWstAcademy.PageMain
                     switch (userObj.IdRole)
                     {
                         case 1:
-                            MessageBox.Show("Здравствуйте, ученик!",
+                            MessageBox.Show("Здравствуйте,"+userObj.Login+"!",
                 "Уведомление",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
                             break;
                         case 2:
-                            MessageBox.Show("Здравствуйте,учитель!",
+                            MessageBox.Show("Здравствуйте," + userObj.Login + "!",
                 "Уведомление",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
