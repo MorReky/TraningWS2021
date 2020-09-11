@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppWstAcademy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Аккадемия WorldSkills Russia" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="105*"/>
@@ -17,16 +17,18 @@
             <Image 
                 Source="./Resources/загружено.jpg"/>
             <TextBlock
+                
                 FontSize="18pt"
                 FontWeight="Bold"
                 Margin="10"
                 VerticalAlignment="Center"
-                Text="Аккадемия WSR"/>
+                Text="{Binding ElementName=FrmMain, Path=Content.Title}"/>
         </StackPanel>
 <!-- Конец разметки Шапки проекта-->
         
 <!-- Начало разметки тела проекта-->
         <Frame
+            NavigationUIVisibility="Hidden"
             Name="FrmMain"
             Grid.Row="1"
             Grid.Column="0"/>

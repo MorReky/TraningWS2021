@@ -6,12 +6,18 @@
       xmlns:local="clr-namespace:AppWstAcademy.PageMain"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageRegistration">
+      Title="Окно регистрации">
     <Grid>
-        <Button  Content="Назад"
-                 VerticalAlignment="Top"
-                 HorizontalAlignment="Right"/>
-        
+        <Button 
+            Name="BtnBack"
+            Content="Назад"
+            BorderBrush="Transparent"
+            Background="Transparent"
+            Width="50"
+            Height="25"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right" Click="BtnBack_Click"/>
+
         <StackPanel
             HorizontalAlignment="Center" 
             VerticalAlignment="Center">
@@ -21,7 +27,9 @@
                 <TextBlock                    
                     Width="150"
                     Text="Введите логин:"/>
-                <TextBox/>
+                <TextBox
+                    Name="TxbLogin"
+                    />
             </StackPanel>
             <StackPanel
                 HorizontalAlignment="Center"
@@ -29,7 +37,9 @@
                 <TextBlock                    
                     Width="150"
                     Text="Введите пароль:"/>
-                <PasswordBox/>
+                <TextBox
+                    Name="TxbPassword"
+                    />
             </StackPanel>
             <StackPanel
                 HorizontalAlignment="Center"
@@ -38,11 +48,18 @@
                 <TextBlock                     
                     Width="150"
                     Text="Повторите пароль: "/>
-                <PasswordBox/>
+                <PasswordBox
+                    PasswordChanged="PsbPassword_PasswordChanged"
+                    Name="PsbPassword"
+                    />
             </StackPanel>
             <StackPanel
                 Margin="0,5,5,0">
-                <Button Content="Создать"
+                <Button 
+                    IsEnabled="False"
+                    Content="Создать"
+                    Name="BtnCreate"
+                    Click="BtnCreate_Click"
                     Style="{StaticResource AcceptButton}"/>
             </StackPanel>
         </StackPanel>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AppWstAcademy.PageMain"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageLogin">
+      Title="Окно авторизации">
 
     <Grid>
         <StackPanel
@@ -18,7 +18,8 @@
                 <TextBlock                    
                     Width="150"
                     Text="Введите логин:"/>
-                <TextBox/>
+                <TextBox
+                    Name="TxbLogin"/>
             </StackPanel>
             <StackPanel
                 HorizontalAlignment="Center"
@@ -27,13 +28,16 @@
                 <TextBlock                     
                     Width="150"
                     Text="Введите пароль: "/>
-                <PasswordBox/>
+                <PasswordBox
+                    Name="PsbPassword"/>
             </StackPanel>
             <StackPanel
                 Margin="0,5,5,0"
                 
                 Orientation="Horizontal">
                 <Button Content="Войти"
+                        Name="BtnLogin"
+                        Click="BtnLogin_Click"
                         Margin="5,0,5,5"
                     Style="{StaticResource AcceptButton}"/>
                 <Button 
