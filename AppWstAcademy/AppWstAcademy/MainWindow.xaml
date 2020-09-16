@@ -22,9 +22,10 @@
                 FontWeight="Bold"
                 Margin="10"
                 VerticalAlignment="Center"
-                Text="{Binding ElementName=FrmMain, Path=Content.Title}"/>
+                Text="{Binding ElementName=FrmMain, Path=Content.Title}" Background="#FFD38235"/>
         </StackPanel>
-<!-- Конец разметки Шапки проекта-->
+
+        <!-- Конец разметки Шапки проекта-->
         
 <!-- Начало разметки тела проекта-->
         <Frame
