@@ -4,6 +4,25 @@
              xmlns:local="clr-namespace:AppWstAcademy"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!--Кнопка с прозрачным наполнением-->
+        <Style TargetType="Button" x:Key="BtnTransparent">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="FontSize" Value="12pt"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+
         <Style TargetType="TextBox">
             <Setter Property="Width" Value="150"/>
             <Setter Property="FontSize" Value="12pt"/>

@@ -11,12 +11,8 @@
         <Button 
             Name="BtnBack"
             Content="Назад"
-            BorderBrush="Transparent"
-            Background="Transparent"
-            Width="50"
-            Height="25"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right" Click="BtnBack_Click"/>
+            Style="{StaticResource BtnTransparent}"
+            Click="BtnBack_Click"/>
 
         <StackPanel
             HorizontalAlignment="Center" 

@@ -54,16 +54,18 @@ namespace AppWstAcademy.PageMain
                     switch (userObj.IdRole)
                     {
                         case 1:
-                            MessageBox.Show("Здравствуйте,"+userObj.Login+"!",
-                "Уведомление",
-                MessageBoxButton.OK,
-                MessageBoxImage.Warning);
+                            //            MessageBox.Show("Здравствуйте,"+userObj.Login+"!",
+                            //"Уведомление",
+                            //MessageBoxButton.OK,
+                            //MessageBoxImage.Warning);
+                            FrameApp.frmObj.Navigate(new PageStudent());
                             break;
                         case 2:
-                            MessageBox.Show("Здравствуйте," + userObj.Login + "!",
-                "Уведомление",
-                MessageBoxButton.OK,
-                MessageBoxImage.Warning);
+                            //            MessageBox.Show("Здравствуйте," + userObj.Login + "!",
+                            //"Уведомление",
+                            //MessageBoxButton.OK,
+                            //MessageBoxImage.Warning);
+                            FrameApp.frmObj.Navigate(new PageTeacher());
                             break;
                     }
                 }
