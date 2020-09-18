@@ -7,8 +7,14 @@ using System.Windows.Controls;
 
 namespace AppWstAcademy.DataFilesApp
 {
+   /// <summary>
+   /// Класс работы с Page
+   /// </summary>
     class FrameApp
     {
+        /// <summary>
+        /// Логика взаимодействия между страницами
+        /// </summary>
         public static Frame frmObj;
     }
 }

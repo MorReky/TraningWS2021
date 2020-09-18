@@ -59,6 +59,7 @@
           <Property Name="IdSpecial" Type="int" Nullable="false" />
           <Property Name="IdYearAdd" Type="int" Nullable="false" />
           <Property Name="IdFormTime" Type="int" Nullable="false" />
+          <Property Name="IdNameGroup" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -118,15 +119,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Journal_Student">
+        <Association Name="FK_Journal_Student1">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="Journal" Type="Self.Journal" Multiplicity="0..1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Journal">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="IdStudent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -139,6 +140,18 @@
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="IdFormTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_NameGroup">
+          <End Role="NameGroup" Type="Self.NameGroup" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdNameGroup" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -210,12 +223,16 @@
             <End Role="NameGroup" EntitySet="NameGroup" />
             <End Role="Journal" EntitySet="Journal" />
           </AssociationSet>
-          <AssociationSet Name="FK_Journal_Student" Association="Self.FK_Journal_Student">
+          <AssociationSet Name="FK_Journal_Student1" Association="Self.FK_Journal_Student1">
             <End Role="Student" EntitySet="Student" />
             <End Role="Journal" EntitySet="Journal" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_FormTime" Association="Self.FK_Student_FormTime">
             <End Role="FormTime" EntitySet="FormTime" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_NameGroup" Association="Self.FK_Student_NameGroup">
+            <End Role="NameGroup" EntitySet="NameGroup" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Special" Association="Self.FK_Student_Special">
@@ -267,9 +284,13 @@
             <End Role="NameGroup" EntitySet="NameGroup" />
             <End Role="Journal" EntitySet="Journal" />
           </AssociationSet>
-          <AssociationSet Name="FK_Journal_Student" Association="AppAcademyWSRModel.FK_Journal_Student">
+          <AssociationSet Name="FK_Journal_Student1" Association="AppAcademyWSRModel.FK_Journal_Student1">
             <End Role="Student" EntitySet="Student" />
             <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_NameGroup" Association="AppAcademyWSRModel.FK_Student_NameGroup">
+            <End Role="NameGroup" EntitySet="NameGroup" />
+            <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="AppAcademyWSRModel.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -312,7 +333,7 @@
           <Property Name="IdNameGroup" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Discipline" Relationship="AppAcademyWSRModel.FK_Journal_Discipline" FromRole="Journal" ToRole="Discipline" />
           <NavigationProperty Name="NameGroup" Relationship="AppAcademyWSRModel.FK_Journal_NameGroup" FromRole="Journal" ToRole="NameGroup" />
-          <NavigationProperty Name="Student" Relationship="AppAcademyWSRModel.FK_Journal_Student" FromRole="Journal" ToRole="Student" />
+          <NavigationProperty Name="Student" Relationship="AppAcademyWSRModel.FK_Journal_Student1" FromRole="Journal" ToRole="Student" />
         </EntityType>
         <EntityType Name="NameGroup">
           <Key>
@@ -321,6 +342,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Journal" Relationship="AppAcademyWSRModel.FK_Journal_NameGroup" FromRole="NameGroup" ToRole="Journal" />
+          <NavigationProperty Name="Student" Relationship="AppAcademyWSRModel.FK_Student_NameGroup" FromRole="NameGroup" ToRole="Student" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -347,8 +369,10 @@
           <Property Name="IdSpecial" Type="Int32" Nullable="false" />
           <Property Name="IdYearAdd" Type="Int32" Nullable="false" />
           <Property Name="IdFormTime" Type="Int32" Nullable="false" />
+          <Property Name="IdNameGroup" Type="Int32" Nullable="false" />
           <NavigationProperty Name="FormTime" Relationship="AppAcademyWSRModel.FK_Student_FormTime" FromRole="Student" ToRole="FormTime" />
-          <NavigationProperty Name="Journal" Relationship="AppAcademyWSRModel.FK_Journal_Student" FromRole="Student" ToRole="Journal" />
+          <NavigationProperty Name="Journal" Relationship="AppAcademyWSRModel.FK_Journal_Student1" FromRole="Student" ToRole="Journal" />
+          <NavigationProperty Name="NameGroup" Relationship="AppAcademyWSRModel.FK_Student_NameGroup" FromRole="Student" ToRole="NameGroup" />
           <NavigationProperty Name="Special" Relationship="AppAcademyWSRModel.FK_Student_Special" FromRole="Student" ToRole="Special" />
           <NavigationProperty Name="YearAdd" Relationship="AppAcademyWSRModel.FK_Student_YearAdd" FromRole="Student" ToRole="YearAdd" />
         </EntityType>
@@ -437,15 +461,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Journal_Student">
+        <Association Name="FK_Journal_Student1">
           <End Type="AppAcademyWSRModel.Student" Role="Student" Multiplicity="1" />
-          <End Type="AppAcademyWSRModel.Journal" Role="Journal" Multiplicity="0..1" />
+          <End Type="AppAcademyWSRModel.Journal" Role="Journal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Journal">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_NameGroup">
+          <End Type="AppAcademyWSRModel.NameGroup" Role="NameGroup" Multiplicity="1" />
+          <End Type="AppAcademyWSRModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameGroup">
               <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdNameGroup" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -485,7 +521,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -545,6 +581,7 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="AppAcademyWSRModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="IdNameGroup" ColumnName="IdNameGroup" />
                 <ScalarProperty Name="IdFormTime" ColumnName="IdFormTime" />
                 <ScalarProperty Name="IdYearAdd" ColumnName="IdYearAdd" />
                 <ScalarProperty Name="IdSpecial" ColumnName="IdSpecial" />
