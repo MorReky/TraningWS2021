@@ -1,4 +1,5 @@
-﻿using AppWstAcademy.DataFilesApp;
+﻿using AppWstAcademy.ClassHelper;
+using AppWstAcademy.DataFilesApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,7 @@ namespace AppWstAcademy.PageMain
                             //"Уведомление",
                             //MessageBoxButton.OK,
                             //MessageBoxImage.Warning);
+                            UserControlHelp.LoginUser = TxbLogin.Text;
                             FrameApp.frmObj.Navigate(new PageStudent());
                             break;
                         case 2:
