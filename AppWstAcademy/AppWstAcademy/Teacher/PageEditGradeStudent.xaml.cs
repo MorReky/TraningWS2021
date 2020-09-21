@@ -1,4 +1,5 @@
-﻿using AppWstAcademy.DataFilesApp;
+﻿using AppWstAcademy.ClassHelper;
+using AppWstAcademy.DataFilesApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,15 @@ namespace AppWstAcademy.Teacher
     /// </summary>
     public partial class PageEditGradeStudent : Page
     {
+        private int StudentId;
+
         public PageEditGradeStudent(Student student)
         {
             InitializeComponent();
 
             TxtName.Text = student.Name;
+
+            StudentId = student.Id;
 
             ListJournal.ItemsSource = OdbConnectHelper.entObj.Journal.Where(x => x.Id == student.Id).ToList();
             ListJournal.SelectedItem = 0;
@@ -39,7 +44,16 @@ namespace AppWstAcademy.Teacher
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            //Верно ли я понимаю, что i в БД  и i в DataGrid это один объект. Не клон и не экземпляр?
+            History historyObj = new History()
+            {
+                IdTeacher= UserControlHelp.IdUser,
+                IdStudent=StudentId,
+                IdStatus=2,
+                DateEvent=DateTime.Now,
+            };
+            OdbConnectHelper.entObj.History.Add(historyObj);
+            OdbConnectHelper.entObj.SaveChanges();
+
             OdbConnectHelper.entObj.SaveChanges();
             MessageBox.Show(
                 "Данные успешно сохранены",

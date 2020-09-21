@@ -26,7 +26,7 @@ namespace AppWstAcademy.PageMain
         {
             InitializeComponent();
 
-            if(Properties.Settings.Default.EventSaveLogin!=string.Empty)
+            if (Properties.Settings.Default.EventSaveLogin != string.Empty)
             {
                 TxbLogin.Text = Properties.Settings.Default.EventSaveLogin;
             }
@@ -34,7 +34,7 @@ namespace AppWstAcademy.PageMain
 
         public void RememberMe()
         {
-            if (ChkSaveLogin.IsChecked==true)
+            if (ChkSaveLogin.IsChecked == true)
             {
                 Properties.Settings.Default.EventSaveLogin = TxbLogin.Text;
                 Properties.Settings.Default.Save();
@@ -72,22 +72,15 @@ namespace AppWstAcademy.PageMain
                 }
                 else
                 {
+                    UserControlHelp.IdUser = userObj.Id;
                     switch (userObj.IdRole)
                     {
                         case 1:
-                            //            MessageBox.Show("Здравствуйте,"+userObj.Login+"!",
-                            //"Уведомление",
-                            //MessageBoxButton.OK,
-                            //MessageBoxImage.Warning);
                             RememberMe();
                             UserControlHelp.LoginUser = TxbLogin.Text;
                             FrameApp.frmObj.Navigate(new PageStudent());
                             break;
                         case 2:
-                            //            MessageBox.Show("Здравствуйте," + userObj.Login + "!",
-                            //"Уведомление",
-                            //MessageBoxButton.OK,
-                            //MessageBoxImage.Warning);
                             RememberMe();
                             FrameApp.frmObj.Navigate(new PageTeacher());
                             break;
