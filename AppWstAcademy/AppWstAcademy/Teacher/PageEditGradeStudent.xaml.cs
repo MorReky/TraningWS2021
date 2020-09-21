@@ -24,6 +24,12 @@ namespace AppWstAcademy.Teacher
         public PageEditGradeStudent(Student student)
         {
             InitializeComponent();
+
+            TxtName.Text = student.Name;
+
+            ListJournal.ItemsSource = OdbConnectHelper.entObj.Journal.Where(x => x.Id == student.Id).ToList();
+            ListJournal.SelectedItem = 0;
+            ListJournal.Columns[0].IsReadOnly = true;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -33,7 +39,14 @@ namespace AppWstAcademy.Teacher
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            //Верно ли я понимаю, что i в БД  и i в DataGrid это один объект. Не клон и не экземпляр?
+            OdbConnectHelper.entObj.SaveChanges();
+            MessageBox.Show(
+                "Данные успешно сохранены",
+                "Уведомление",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
     }
 }

@@ -25,6 +25,26 @@ namespace AppWstAcademy.PageMain
         public PageLogin()
         {
             InitializeComponent();
+
+            if(Properties.Settings.Default.EventSaveLogin!=string.Empty)
+            {
+                TxbLogin.Text = Properties.Settings.Default.EventSaveLogin;
+            }
+        }
+
+        public void RememberMe()
+        {
+            if (ChkSaveLogin.IsChecked==true)
+            {
+                Properties.Settings.Default.EventSaveLogin = TxbLogin.Text;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.EventSaveLogin = "";
+                Properties.Settings.Default.Save();
+            }
+
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
@@ -59,6 +79,7 @@ namespace AppWstAcademy.PageMain
                             //"Уведомление",
                             //MessageBoxButton.OK,
                             //MessageBoxImage.Warning);
+                            RememberMe();
                             UserControlHelp.LoginUser = TxbLogin.Text;
                             FrameApp.frmObj.Navigate(new PageStudent());
                             break;
@@ -67,6 +88,7 @@ namespace AppWstAcademy.PageMain
                             //"Уведомление",
                             //MessageBoxButton.OK,
                             //MessageBoxImage.Warning);
+                            RememberMe();
                             FrameApp.frmObj.Navigate(new PageTeacher());
                             break;
                     }

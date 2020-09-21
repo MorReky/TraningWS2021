@@ -45,7 +45,14 @@
                     Click="BtnReg_Click"
                     Margin="0,0,5,5"
                 Content="Регистрация"/>
-            </StackPanel>            
+            </StackPanel>
+            <StackPanel>
+                <CheckBox Name="ChkSaveLogin"
+                          Content="Сохранить логин"
+                          HorizontalAlignment="Right"
+                          IsChecked="True"
+                          Margin="5,0,10,5"/>
+            </StackPanel>
         </StackPanel> 
     </Grid>
 </Page>
