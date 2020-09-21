@@ -72,11 +72,24 @@
     <Compile Include="DataFilesApp\Status.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Director\WindowDirector.xaml.cs">
+      <DependentUpon>WindowDirector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVC\Controller\ControllerLogin.cs" />
+    <Compile Include="MVC\HelpController\ClientInfo.cs" />
+    <Compile Include="MVC\HelpController\DataBaseHelpController.cs" />
+    <Compile Include="MVC\PageMVC.xaml.cs">
+      <DependentUpon>PageMVC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVC\View\ViewLogincs.cs" />
     <Compile Include="Teacher\PageAddEvaluation.xaml.cs">
       <DependentUpon>PageAddEvaluation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\PageAddStudent.xaml.cs">
       <DependentUpon>PageAddStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\PageDeleteStudent.xaml.cs">
+      <DependentUpon>PageDeleteStudent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\PageEditGrade.xaml.cs">
       <DependentUpon>PageEditGrade.xaml</DependentUpon>
@@ -90,6 +103,10 @@
     <Compile Include="Teacher\PageStudentList.xaml.cs">
       <DependentUpon>PageStudentList.xaml</DependentUpon>
     </Compile>
+    <Page Include="Director\WindowDirector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -152,6 +169,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVC\PageMVC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageMain\PageLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Teacher\PageAddStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\PageDeleteStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

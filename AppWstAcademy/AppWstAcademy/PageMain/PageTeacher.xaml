@@ -36,9 +36,11 @@
                     Click="BtnEditGradeStudent_Click"
                     />
             <Button Content="Удалить студента"
-                    />
+                    Name="BtnDelete"
+                    Click="BtnDelete_Click"/>
             <Button Content="MVC"
-                    />
+                    Name="BtnMVC"
+                    Click="BtnMVC_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

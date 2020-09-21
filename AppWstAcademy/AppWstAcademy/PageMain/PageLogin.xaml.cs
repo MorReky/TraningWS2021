@@ -1,5 +1,6 @@
 ﻿using AppWstAcademy.ClassHelper;
 using AppWstAcademy.DataFilesApp;
+using AppWstAcademy.Director;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,6 +74,8 @@ namespace AppWstAcademy.PageMain
                 else
                 {
                     UserControlHelp.IdUser = userObj.Id;
+                    UserControlHelp.NameUser = userObj.Name;
+
                     switch (userObj.IdRole)
                     {
                         case 1:
@@ -83,6 +86,10 @@ namespace AppWstAcademy.PageMain
                         case 2:
                             RememberMe();
                             FrameApp.frmObj.Navigate(new PageTeacher());
+                            break;
+                        case 3:
+                            WindowDirector windowDirector = new WindowDirector();
+                            windowDirector.Show();
                             break;
                     }
                 }

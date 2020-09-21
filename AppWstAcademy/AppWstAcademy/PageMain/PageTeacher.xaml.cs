@@ -1,4 +1,5 @@
 ﻿using AppWstAcademy.DataFilesApp;
+using AppWstAcademy.MVC;
 using AppWstAcademy.Teacher;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,16 @@ namespace AppWstAcademy.PageMain
         private void BtnEditGradeStudent_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate(new PageEditGrade());
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.Navigate(new PageDeleteStudent());
+        }
+
+        private void BtnMVC_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.Navigate(new PageMVC());
         }
     }
 }

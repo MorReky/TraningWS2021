@@ -16,6 +16,8 @@ namespace AppWstAcademy.ClassHelper
         public static string PasswordUser { get; set; }
 
         public static string LoginUser { get; set; }
+
+        public static string NameUser { get; set; }
     }
         
 }

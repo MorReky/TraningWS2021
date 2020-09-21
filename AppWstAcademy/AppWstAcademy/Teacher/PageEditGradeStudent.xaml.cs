@@ -32,7 +32,7 @@ namespace AppWstAcademy.Teacher
 
             StudentId = student.Id;
 
-            ListJournal.ItemsSource = OdbConnectHelper.entObj.Journal.Where(x => x.Id == student.Id).ToList();
+            ListJournal.ItemsSource = OdbConnectHelper.entObj.Journal.Where(x => x.IdStudent == student.Id).ToList();
             ListJournal.SelectedItem = 0;
             ListJournal.Columns[0].IsReadOnly = true;
         }
@@ -52,7 +52,6 @@ namespace AppWstAcademy.Teacher
                 DateEvent=DateTime.Now,
             };
             OdbConnectHelper.entObj.History.Add(historyObj);
-            OdbConnectHelper.entObj.SaveChanges();
 
             OdbConnectHelper.entObj.SaveChanges();
             MessageBox.Show(
